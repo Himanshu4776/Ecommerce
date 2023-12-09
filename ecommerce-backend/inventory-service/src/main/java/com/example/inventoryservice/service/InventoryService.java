@@ -23,8 +23,8 @@ public class InventoryService {
     }
 
     @Transactional(readOnly = true)
-    public List<InventoryResponse> CheckListInInventory(List<String> skuCodes) {
-        return inventoryRepository.findListBySkuCodes(skuCodes)
+    public List<InventoryResponse> CheckListInInventory(List<String> skuCode) {
+        return inventoryRepository.findBySkuCodeIn(skuCode)
                 .stream()
                 .map(inventory -> mapToResponse(inventory))
                 .collect(Collectors.toList());

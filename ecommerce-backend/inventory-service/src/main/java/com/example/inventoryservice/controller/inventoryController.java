@@ -22,7 +22,7 @@ public class inventoryController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<InventoryResponse> isInStockInventory(@RequestParam List<String> skuCodes) {
-        return inventoryService.CheckListInInventory(skuCodes);
+    public List<InventoryResponse> isInStockInventory(@RequestParam List<String> skuCode) {
+        return inventoryService.CheckListInInventory(skuCode);
     }
 }
