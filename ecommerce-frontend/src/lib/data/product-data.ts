@@ -4,7 +4,7 @@ export interface Product {
   image: string;
 }
 
-export const listenNowAlbums: Product[] = [
+export const trendyProducts: Product[] = [
   {
     name: "React Rendezvous",
     brand: "Ethan Byte",
@@ -29,9 +29,15 @@ export const listenNowAlbums: Product[] = [
     image:
       "https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80",
   },
+  {
+    name: "Womens Shopping",
+    brand: "ZARA",
+    image:
+      "https://as1.ftcdn.net/v2/jpg/01/40/97/08/1000_F_140970862_ApYCTSWXUDpNbpQP4UgNyhnOXnuG4gY5.jpg",
+  },
 ];
 
-export const madeForYouAlbums: Album[] = [
+export const productsForYou: Product[] = [
   {
     name: "Thinking Components",
     brand: "Lena Logic",
