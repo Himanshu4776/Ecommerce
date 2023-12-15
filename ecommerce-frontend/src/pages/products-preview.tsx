@@ -10,6 +10,10 @@ import { Separator } from "../components/ui/separator";
 import { ScrollArea, ScrollBar } from "../components/ui/scroll-area";
 import { trendyProducts, productsForYou } from "../lib/data/product-data";
 import { AlbumArtwork } from "../components/core/album-art-work";
+import { IconPc } from "@/lib/icons/icon-pc";
+import { IconCloset } from "@/lib/icons/icon-closet";
+import { IconFood } from "@/lib/icons/icon-food";
+import { IconBag } from "@/lib/icons/icon-bag";
 
 export default function ProductsPreview() {
   return (
@@ -41,8 +45,52 @@ export default function ProductsPreview() {
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
-        <div className="mt-6 space-y-1">
-          <h2 className="text-2xl font-semibold tracking-tight">
+        {/* category section */}
+        <div className="flex flex-col pt-8">
+          <h2 className="text-2xl float-left font-semibold tracking-tight">
+            Shop by Category
+          </h2>
+          <div className="flex justify-around py-4">
+            <Button
+              variant="outline"
+              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
+            >
+              <IconPc />
+              <p className="ml-2">Electronics</p>
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
+            >
+              <IconCloset />
+              <p className="ml-2">Fashion</p>
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
+            >
+              <IconFood />
+              <p className="ml-2">Fashion</p>
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
+            >
+              <IconCloset />
+              <p className="ml-2">Dining</p>
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
+            >
+              <IconBag />
+              <p className="ml-2">Daily Needs</p>
+            </Button>
+          </div>
+        </div>
+        {/* category section end */}
+        <div className="mt-6 flex flex-col space-y-1">
+          <h2 className="text-2xl float-left font-semibold tracking-tight">
             Products for You
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -68,6 +116,7 @@ export default function ProductsPreview() {
           </ScrollArea>
         </div>
       </TabsContent>
+      <Button variant="secondary">view All Products</Button>
     </Tabs>
   );
 }
