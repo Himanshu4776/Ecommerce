@@ -15,8 +15,7 @@ export function Banner() {
       <div
         className="bg-cover bg-center h-96 md:h-screen"
         style={{
-          backgroundImage:
-            "url(https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
+          backgroundImage: "url(../../../public/banner.jpg)",
         }}
       ></div>
       <div className="absolute inset-0 bg-black opacity-50"></div>

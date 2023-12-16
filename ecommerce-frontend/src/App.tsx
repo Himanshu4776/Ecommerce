@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import "./App.css";
 import Home from "./pages/home";
 import ProductsPreview from "./pages/products-preview";
