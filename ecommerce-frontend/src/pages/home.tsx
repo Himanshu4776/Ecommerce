@@ -1,9 +1,14 @@
+import React from "react";
 import Header from "@/components/core/header";
+import { Banner } from "@/components/core/banner";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
-    </div>
+      <div className="pb-8">
+        <Banner />
+      </div>
+    </>
   );
 }
