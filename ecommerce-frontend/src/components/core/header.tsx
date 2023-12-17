@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import SearchBar from "./search-bar";
 import { UserNav } from "../core/user-nav";
+import { IconCart } from "@/lib/icons/icon-cart";
+import { IconStore } from "@/lib/icons/icon-store";
+import { IconWishlist } from "@/lib/icons/icon-wishlist";
 
 export interface headerProps {
   imgUrl?: string;
@@ -26,7 +29,14 @@ export default function Header({ imgUrl }: headerProps) {
           </div>
           <div className="flex space-x-4 text-background items-center">
             <nav className="cursor-pointer hidden lg:block">Products</nav>
-            <nav className="cursor-pointer hidden lg:block">Cart</nav>
+            <nav className="cursor-pointer hidden lg:block">Categories</nav>
+            <nav className="cursor-pointer hidden lg:block">Sale</nav>
+            <nav className="cursor-pointer hidden lg:block">
+              <IconWishlist />
+            </nav>
+            <nav className="cursor-pointer hidden lg:block">
+              <IconCart />
+            </nav>
             <UserNav imgUrl={imgUrl} />
           </div>
         </div>

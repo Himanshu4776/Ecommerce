@@ -1,5 +1,7 @@
 // src/SearchBar.js
 import React, { useState } from "react";
+import { ToastAction } from "../ui/toast";
+import { useToast } from "../ui/use-toast";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,60 +19,9 @@ export interface SearchBarProps {
 }
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
-  const [searchText, setSearchText] = useState<string>("");
+  const [searchText, setSearchText] = useState("");
+  const { toast } = useToast();
   return (
-    // <div className="bg-foreground flex">
-    //   <input
-    //     type="text"
-    //     placeholder="Search Your Product Here..."
-    //     className="grow border border-none border-gray-300 bg-darkGray px-4 py-2 rounded-lg focus:bg-foreground focus:outline-none focus:border-background"
-    //     onChange={(e) => onSearch(e.target.value)}
-    //   />
-    //   <DropdownMenu>
-    //     <DropdownMenuTrigger className="bg-darkGray rounded-xl p-2">
-    //       Open
-    //     </DropdownMenuTrigger>
-    //     <DropdownMenuContent>
-    //       <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    //       <DropdownMenuSeparator />
-    //       <DropdownMenuItem>Profile</DropdownMenuItem>
-    //       <DropdownMenuItem>Billing</DropdownMenuItem>
-    //       <DropdownMenuItem>Team</DropdownMenuItem>
-    //       <DropdownMenuItem>Subscription</DropdownMenuItem>
-    //     </DropdownMenuContent>
-    //   </DropdownMenu>
-    // </div>
-
-    // -----------------------------------------
-    // <div className="bg-darkBlack h-full flex">
-    //   <input
-    //     type="text"
-    //     placeholder="Search Here like Nike Mens Free Rn 2018 Running Shoe..."
-    //     className="grow border border-none border-gray-300 bg-darkGray px-4 py-2 rounded-3xl focus:bg-darkGray focus:outline-none focus:border-background focus:outline-background focus:outline-1"
-    //     onChange={(e) => onSearch(e.target.value)}
-    //   >
-    //     <IconSearch />
-    //   </input>
-    //   <div className="ml-2">
-    //     {/* Add margin to the left */}
-    //     <DropdownMenu>
-    //       <DropdownMenuTrigger className="bg-darkGray text-gray-400 rounded-3xl py-2 px-4 flex items-center">
-    //         <p className="pr-1">filter</p>
-    //         <IconFilter />
-    //       </DropdownMenuTrigger>
-    //       <DropdownMenuContent className="bg-foreground text-background">
-    //         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    //         <DropdownMenuSeparator />
-    //         <DropdownMenuItem>Profile</DropdownMenuItem>
-    //         <DropdownMenuItem>Billing</DropdownMenuItem>
-    //         <DropdownMenuItem>Team</DropdownMenuItem>
-    //         <DropdownMenuItem>Subscription</DropdownMenuItem>
-    //       </DropdownMenuContent>
-    //     </DropdownMenu>
-    //   </div>
-    // </div>
-
-    // ------------------------------------------------
     <div className="bg-darkBlack h-full flex items-center">
       <div className="relative flex-grow">
         <input
@@ -79,15 +30,25 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           className="w-full border border-none border-gray-300 bg-darkGray px-4 py-2 rounded-3xl focus:bg-darkGray focus:outline-none focus:border-background focus:outline-background focus:outline-1"
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 hover:bg-darkBlack focus:outline-1">
           <Button
-            onClick={(e) => {
-              console.log("text", searchText);
+            onClick={() => {
+              console.log(searchText === "");
+
+              if (searchText === "") {
+                toast({
+                  title: "No Search text found !!! ",
+                  description: "Please enter a text to search",
+                });
+                console.log("called");
+              }
               onSearch(searchText);
             }}
-            className="cursor-pointer bg-transparent"
+            className="cursor-pointer hover:bg-transparent hover:outline-1 bg-transparent"
           >
-            <IconSearch />
+            <span>
+              <IconSearch />
+            </span>
           </Button>
         </div>
       </div>
