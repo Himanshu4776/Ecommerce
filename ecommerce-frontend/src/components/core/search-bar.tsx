@@ -1,7 +1,5 @@
-// src/SearchBar.js
 import React, { useState } from "react";
-import { ToastAction } from "../ui/toast";
-import { useToast } from "../ui/use-toast";
+import { ToastContainer, toast } from "react-toastify";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +11,7 @@ import {
 import { Button } from "../ui/button";
 import { IconFilter } from "@/lib/icons/icon-filter";
 import { IconSearch } from "@/lib/icons/icon-search";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -20,7 +19,7 @@ export interface SearchBarProps {
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
   const [searchText, setSearchText] = useState("");
-  const { toast } = useToast();
+  const notify = () => toast.dark("Please select text to Search!");
   return (
     <div className="bg-darkBlack h-full flex items-center">
       <div className="relative flex-grow">
@@ -33,14 +32,8 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 hover:bg-darkBlack focus:outline-1">
           <Button
             onClick={() => {
-              console.log(searchText === "");
-
               if (searchText === "") {
-                toast({
-                  title: "No Search text found !!! ",
-                  description: "Please enter a text to search",
-                });
-                console.log("called");
+                notify();
               }
               onSearch(searchText);
             }}
@@ -50,6 +43,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
               <IconSearch />
             </span>
           </Button>
+          <ToastContainer position="bottom-right" />
         </div>
       </div>
       <div className="ml-2">

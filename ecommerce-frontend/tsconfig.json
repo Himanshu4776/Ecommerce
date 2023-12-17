@@ -12,8 +12,8 @@
       "@/*": ["./src/*"]
     },
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
+    /* Bundler mode chnaged moduleResolution */
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
