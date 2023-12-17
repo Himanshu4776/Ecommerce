@@ -1,10 +1,6 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "../components/ui/tabs";
+import { Tabs, TabsContent } from "../components/ui/tabs";
 
 import { Separator } from "../components/ui/separator";
 import { ScrollArea, ScrollBar } from "../components/ui/scroll-area";
@@ -14,6 +10,8 @@ import { IconPc } from "@/lib/icons/icon-pc";
 import { IconCloset } from "@/lib/icons/icon-closet";
 import { IconFood } from "@/lib/icons/icon-food";
 import { IconBag } from "@/lib/icons/icon-bag";
+import { IconStore } from "@/lib/icons/icon-store";
+import { CategoryPreview } from "./category-preview";
 
 export default function ProductsPreview() {
   return (
@@ -21,7 +19,9 @@ export default function ProductsPreview() {
       <TabsContent value="music" className="border-none p-0 outline-none">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">Shop Now</h2>
+            <h2 className="text-2xl text-left font-semibold tracking-tight">
+              Featured Products
+            </h2>
             <p className="text-sm text-muted-foreground">
               Top picks for you. Updated daily.
             </p>
@@ -47,53 +47,44 @@ export default function ProductsPreview() {
         </div>
         {/* category section */}
         <div className="flex flex-col pt-8">
-          <h2 className="text-2xl float-left font-semibold tracking-tight">
+          <h2 className="text-2xl text-left font-semibold tracking-tight">
             Shop by Category
           </h2>
-          <div className="flex justify-around py-4">
-            <Button
-              variant="outline"
-              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
-            >
-              <IconPc />
-              <p className="ml-2">Electronics</p>
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
-            >
-              <IconCloset />
-              <p className="ml-2">Fashion</p>
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
-            >
-              <IconFood />
-              <p className="ml-2">Fashion</p>
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
-            >
-              <IconCloset />
-              <p className="ml-2">Dining</p>
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-foreground flex flex-row border-orange-700 p-8 text-orange-700 hover:text-orange-700"
-            >
-              <IconBag />
-              <p className="ml-2">Daily Needs</p>
-            </Button>
-          </div>
+          <p className="text-sm text-left text-muted-foreground">
+            Shop using the best suitable category for you.
+          </p>
+          <Separator className="my-4" />
+          <ScrollArea>
+            <div className="flex justify-around py-4">
+              <CategoryPreview
+                categoryIcon={<IconStore />}
+                categoryName="All Product"
+              />
+              <CategoryPreview
+                categoryIcon={<IconPc />}
+                categoryName="Electronics"
+              />
+              <CategoryPreview
+                categoryIcon={<IconCloset />}
+                categoryName="Fashion"
+              />
+              <CategoryPreview
+                categoryIcon={<IconFood />}
+                categoryName="Dining"
+              />
+              <CategoryPreview
+                categoryIcon={<IconBag />}
+                categoryName="Daily Needs"
+              />
+            </div>
+          </ScrollArea>
         </div>
         {/* category section end */}
         <div className="mt-6 flex flex-col space-y-1">
-          <h2 className="text-2xl float-left font-semibold tracking-tight">
+          <h2 className="text-2xl text-left font-semibold tracking-tight">
             Products for You
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-left text-muted-foreground">
             Your Recently visited and Wishlisted products. Updated daily.
           </p>
         </div>
